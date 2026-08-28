@@ -200,8 +200,9 @@ async def health() -> dict[str, Any]:
 
 
 @router.post("/credentials", dependencies=[Depends(require_auth)])
-async def save_credentials(request: CredentialsRequest, user: dict[str, Any] = None) -> dict[str, Any]:
-    if user is None or user.get("role") != "admin":
+async def save_credentials(request: CredentialsRequest,
+                           user: dict[str, Any] = Depends(require_auth)) -> dict[str, Any]:
+    if user.get("role") != "admin":
         raise HTTPException(status_code=403, detail="仅管理员可保存凭据")
     _save_credentials(request.app_key, request.app_secret, request.open_token, request.api_root)
     return {"ok": True, "masked": request.app_key[:4] + "****"}
