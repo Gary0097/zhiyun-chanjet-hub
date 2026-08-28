@@ -1,0 +1,15 @@
+{
+  "id": "zhiyun-chanjet-hub",
+  "name": "用友畅捷通连接中心",
+  "version": "0.1.0",
+  "type": "app",
+  "description": "快捷接入用友畅捷通 T+/T+Cloud/好会计/好业财 开放API：配置企业凭据、连通测试、订单/往来/库存等核心取数并写入统一数据中心，供智能体问数。",
+  "author": "Zhiyun AI",
+  "entry": { "backend": "backend/main.py", "frontend": "ui/index.js" },
+  "qwenpaw_version": { "min": "2.1.0", "max": "2.2.0" },
+  "meta": {
+    "pawapp": { "icon": "🔌", "category": "integration", "entry_page": "/apps/zhiyun-chanjet-hub", "launch_scope": "page" },
+    "permissions": { "chat": true, "storage": true },
+    "requires": ["zhiyun-data-core>=0.1.0"]
+  }
+}
